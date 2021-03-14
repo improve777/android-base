@@ -75,3 +75,7 @@ fun View.hideKeyboard(): Boolean {
         false
     }
 }
+
+inline infix fun View.click(crossinline onClick: (view: View) -> Unit) {
+    setOnClickListener { onClick(it) }
+}
