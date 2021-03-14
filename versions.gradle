@@ -25,6 +25,8 @@ versions.rxJava = "2.2.21"
 versions.rxJavaAndroid = "2.1.1"
 versions.rxKotlin = "2.4.0"
 versions.timber = "4.7.1"
+versions.exoplayer = "2.13.2"
+versions.hilt = "2.33-beta"
 
 def deps = [:]
 
@@ -125,5 +127,26 @@ deps.koin = koin
  * limitations under the License.
  */
 deps.timber = "com.jakewharton.timber:timber:$versions.timber"
+
+def exoplayer = [:]
+exoplayer.all = "com.google.android.exoplayer:exoplayer:$versions.exoplayer"
+// Core functionality (required).
+exoplayer.core = "com.google.android.exoplayer:exoplayer-core:$versions.exoplayer"
+// Support for DASH content.
+exoplayer.dash = "com.google.android.exoplayer:exoplayer-dash:$versions.exoplayer"
+// Support for HLS content.
+exoplayer.ui = "com.google.android.exoplayer:exoplayer-ui:$versions.exoplayer"
+// Support for SmoothStreaming content.
+exoplayer.hls = "com.google.android.exoplayer:exoplayer-hls:$versions.exoplayer"
+// UI components and resources for use with ExoPlayer.
+exoplayer.smoothstreaming = "com.google.android.exoplayer:exoplayer-smoothstreaming:$versions.exoplayer"
+deps.exoplayer = exoplayer
+
+def hilt = [:]
+hilt.id = "dagger.hilt.android.plugin"
+hilt.plugin = "com.google.dagger:hilt-android-gradle-plugin:$versions.hilt"
+hilt.android = "com.google.dagger:hilt-android:$versions.hilt"
+hilt.compiler = "com.google.dagger:hilt-compiler:$versions.hilt"
+deps.hilt = hilt
 
 ext.deps = deps
