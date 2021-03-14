@@ -1,36 +1,14 @@
-// Top-level build file where you can add configuration options common to all sub-projects/modules.
-buildscript {
-    ext.kotlin_version = "1.4.10"
-    repositories {
-        google()
-        jcenter()
-    }
-    dependencies {
-        classpath "com.android.tools.build:gradle:4.1.0"
-        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
-
-        // NOTE: Do not place your application dependencies here; they belong
-        // in the individual module build.gradle files
-    }
-}
-
 plugins {
     id 'com.android.library'
     id 'kotlin-android'
+    id 'kotlin-kapt'
 }
-
-allprojects {
-    repositories {
-        google()
-        jcenter()
-    }
-}
+apply from: 'versions.gradle'
 
 android {
     compileSdkVersion 30
 
     defaultConfig {
-        applicationId "com.improve777.androidbase"
         minSdkVersion 23
         targetSdkVersion 30
         versionCode 1
@@ -52,15 +30,51 @@ android {
     kotlinOptions {
         jvmTarget = '1.8'
     }
+    buildFeatures {
+        dataBinding = true
+    }
 }
 
 dependencies {
-    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
-    implementation 'androidx.core:core-ktx:1.3.2'
-    implementation 'androidx.appcompat:appcompat:1.2.0'
-    implementation 'com.google.android.material:material:1.3.0'
-    implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
-    testImplementation 'junit:junit:4.+'
-    androidTestImplementation 'androidx.test.ext:junit:1.1.2'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
+    implementation deps.kotlin.stdlib
+    implementation deps.kotlin.coroutine
+    implementation deps.kotlin.coroutineAndroid
+
+    implementation deps.android.material
+
+    implementation deps.androidx.coreKtx
+    implementation deps.androidx.appcompat
+    implementation deps.androidx.constraintlayout
+    implementation deps.androidx.swiperefreshlayout
+    implementation deps.androidx.recyclerview
+    implementation deps.androidx.lifecycleExt
+    implementation deps.androidx.lifecycleViewModel
+    implementation deps.androidx.lifecycleLiveData
+    implementation deps.androidx.lifecycleCommon
+    implementation deps.androidx.activityKtx
+    implementation deps.androidx.fragmentKtx
+
+    implementation deps.glide.core
+    kapt deps.glide.compiler
+
+    implementation deps.network.retrofit
+    implementation deps.network.loggingInterceptor
+    implementation deps.network.rxJavaAdapter
+    implementation deps.network.gsonConverter
+
+    implementation deps.rxJava.core
+    implementation deps.rxJava.android
+    implementation deps.rxJava.kotlin
+
+    implementation deps.koin.core
+    implementation deps.koin.android
+    implementation deps.koin.androidExt
+    implementation deps.koin.viewmodel
+    implementation deps.koin.fragment
+
+    implementation deps.timber
+
+    testImplementation deps.test.junit
+    androidTestImplementation deps.test.androidJunit
+    androidTestImplementation deps.test.espresso
 }

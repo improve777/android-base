@@ -1,0 +1,129 @@
+ext.deps = [:]
+
+def versions = [:]
+versions.gradle = "4.1.0"
+versions.kotlin = "1.4.30"
+versions.coroutine = "1.4.3"
+versions.constraintlayout = "2.0.4"
+versions.recyclerview = "1.2.0-beta02"
+versions.swiperefreshlayout = "1.1.0"
+versions.retrofit = "2.9.0"
+versions.loggingInterceptor = "4.9.1"
+versions.glide = "4.12.0"
+versions.koin = "2.2.2"
+versions.lifecycle = "2.2.0"
+versions.lifecycleExt = "2.2.0"
+versions.activityKtx = "1.2.0"
+versions.fragmentKtx = "1.3.0"
+versions.junit = "4.13.2"
+versions.androidJunit = "1.1.2"
+versions.espresso = "3.3.0"
+versions.material = "1.3.0"
+versions.coreKtx = "1.3.2"
+versions.appcompat = "1.2.0"
+versions.rxJava = "2.2.21"
+versions.rxJavaAndroid = "2.1.1"
+versions.rxKotlin = "2.4.0"
+versions.timber = "4.7.1"
+
+def deps = [:]
+
+def kotlin = [:]
+kotlin.plugin = "org.jetbrains.kotlin:kotlin-gradle-plugin:$versions.kotlin"
+kotlin.stdlib = "org.jetbrains.kotlin:kotlin-stdlib:$versions.kotlin"
+kotlin.coroutine = "org.jetbrains.kotlinx:kotlinx-coroutines-core:$versions.coroutine"
+kotlin.coroutineAndroid = "org.jetbrains.kotlinx:kotlinx-coroutines-android:$versions.coroutine"
+deps.kotlin = kotlin
+
+def gradle = [:]
+gradle.plugin = "com.android.tools.build:gradle:$versions.gradle"
+deps.gradle = gradle
+
+def test = [:]
+test.junit = "junit:junit:$versions.junit"
+test.androidJunit = "androidx.test.ext:junit:$versions.androidJunit"
+test.espresso = "androidx.test.espresso:espresso-core:$versions.espresso"
+deps.test = test
+
+def android = [:]
+android.material = "com.google.android.material:material:$versions.material"
+deps.android = android
+
+def androidx = [:]
+androidx.coreKtx = "androidx.core:core-ktx:$versions.coreKtx"
+androidx.appcompat = "androidx.appcompat:appcompat:$versions.appcompat"
+androidx.constraintlayout = "androidx.constraintlayout:constraintlayout:$versions.constraintlayout"
+androidx.lifecycleExt = "androidx.lifecycle:lifecycle-extensions:$versions.lifecycleExt"
+androidx.lifecycleViewModel = "androidx.lifecycle:lifecycle-viewmodel-ktx:$versions.lifecycle"
+androidx.lifecycleLiveData = "androidx.lifecycle:lifecycle-livedata:$versions.lifecycle"
+androidx.lifecycleCommon = "androidx.lifecycle:lifecycle-common:$versions.lifecycle"
+androidx.activityKtx = "androidx.activity:activity-ktx:$versions.activityKtx"
+androidx.fragmentKtx = "androidx.fragment:fragment-ktx:$versions.fragmentKtx"
+androidx.recyclerview = "androidx.recyclerview:recyclerview:$versions.recyclerview"
+androidx.swiperefreshlayout = "androidx.swiperefreshlayout:swiperefreshlayout:$versions.swiperefreshlayout"
+deps.androidx = androidx
+
+def network = [:]
+network.retrofit = "com.squareup.retrofit2:retrofit:$versions.retrofit"
+network.loggingInterceptor = "com.squareup.okhttp3:logging-interceptor:$versions.loggingInterceptor"
+network.rxJavaAdapter = "com.squareup.retrofit2:adapter-rxjava2:$versions.retrofit"
+network.gsonConverter = "com.squareup.retrofit2:converter-gson:$versions.retrofit"
+deps.network = network
+
+def glide = [:]
+glide.core = "com.github.bumptech.glide:glide:$versions.glide"
+glide.compiler = "com.github.bumptech.glide:compiler:$versions.glide"
+deps.glide = glide
+
+def rxJava = [:]
+rxJava.core = "io.reactivex.rxjava2:rxjava:$versions.rxJava"
+/**
+ * https://github.com/ReactiveX/RxAndroid/tree/2.x
+ *
+ * Copyright 2015 The RxAndroid authors
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+rxJava.android = "io.reactivex.rxjava2:rxandroid:$versions.rxJavaAndroid"
+rxJava.kotlin = "io.reactivex.rxjava2:rxkotlin:$versions.rxKotlin"
+deps.rxJava = rxJava
+
+def koin = [:]
+koin.plugin = "org.koin:koin-gradle-plugin:$versions.koin"
+koin.core = "org.koin:koin-core:$versions.koin"
+koin.android = "org.koin:koin-android:$versions.koin"
+koin.androidExt = "org.koin:koin-androidx-ext:$versions.koin"
+koin.viewmodel = "org.koin:koin-androidx-viewmodel:$versions.koin"
+koin.fragment = "org.koin:koin-androidx-fragment:$versions.koin"
+deps.koin = koin
+
+/**
+ * https://github.com/JakeWharton/timber
+ *
+ * Copyright 2013 Jake Wharton
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ *         You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ *         WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+deps.timber = "com.jakewharton.timber:timber:$versions.timber"
+
+ext.deps = deps
