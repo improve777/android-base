@@ -16,7 +16,7 @@ fun View.visibleIf(visible: Boolean?) {
     }
 }
 
-@BindingAdapter(value = ["visibleIf"])
+@BindingAdapter(value = ["goneIf"])
 fun View.goneIf(visible: Boolean?) {
     visibility = if (visible == true) {
         View.VISIBLE
