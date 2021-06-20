@@ -9,7 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.improve777.androidbase.BR
 import timber.log.Timber
 
-abstract class BindViewHolder<T, B : ViewDataBinding>(
+open class BindViewHolder<T, B : ViewDataBinding>(
     @LayoutRes layoutId: Int,
     parent: ViewGroup,
 ) : RecyclerView.ViewHolder(
