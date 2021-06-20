@@ -26,7 +26,8 @@ versions.rxJavaAndroid = "2.1.1"
 versions.rxKotlin = "2.4.0"
 versions.timber = "4.7.1"
 versions.exoplayer = "2.13.2"
-versions.hilt = "2.33-beta"
+versions.hilt = "2.37"
+versions.navigation = "2.3.5"
 
 def deps = [:]
 
@@ -64,6 +65,18 @@ androidx.fragmentKtx = "androidx.fragment:fragment-ktx:$versions.fragmentKtx"
 androidx.recyclerview = "androidx.recyclerview:recyclerview:$versions.recyclerview"
 androidx.swiperefreshlayout = "androidx.swiperefreshlayout:swiperefreshlayout:$versions.swiperefreshlayout"
 deps.androidx = androidx
+
+def navigation = [:]
+// Kotlin
+navigation.fragment = "androidx.navigation:navigation-fragment-ktx:$versions.navigation"
+navigation.ui = "androidx.navigation:navigation-ui-ktx:$versions.navigation"
+// Feature module Support
+navigation.dynamicFeatures = "androidx.navigation:navigation-dynamic-features-fragment:$versions.navigation"
+// Testing Navigation
+navigation.testing = "androidx.navigation:navigation-testing:$versions.navigation"
+// Jetpack Compose Integration
+navigation.compose = "androidx.navigation:navigation-compose:1.0.0-alpha07"
+deps.navigation = navigation
 
 def network = [:]
 network.retrofit = "com.squareup.retrofit2:retrofit:$versions.retrofit"
