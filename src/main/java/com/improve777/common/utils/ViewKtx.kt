@@ -8,16 +8,21 @@ import android.view.View
 import android.view.ViewAnimationUtils
 import android.view.inputmethod.InputMethodManager
 import androidx.databinding.BindingAdapter
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.onEach
 
-@BindingAdapter(value = ["visibleIf"])
-fun View.visibleIf(visible: Boolean?) {
+@BindingAdapter(value = ["visibleIf", "fade"], requireAll = false)
+fun View.visibleIf(visible: Boolean?, fade: Boolean? = false) {
+    if (fade == true) {
+        if (visible == true) fadeIn() else fadeOut()
+    }
+
     visibility = if (visible == true) {
         View.VISIBLE
     } else {
         View.INVISIBLE
     }
 }
-
 @BindingAdapter(value = ["goneIf"])
 fun View.goneIf(visible: Boolean?) {
     visibility = if (visible == true) {
@@ -78,8 +83,15 @@ fun View.hideKeyboard(): Boolean {
     }
 }
 
-inline infix fun View.click(crossinline onClick: (view: View) -> Unit) {
-    setOnClickListener { onClick(it) }
+fun View.click(onClick: suspend (view: View) -> Unit): Flow<View> {
+    return clicks()
+        .throttleFirst(500)
+        .onEach(onClick)
+}
+
+@BindingAdapter("onThrottleClick")
+fun View.throttleClick(onClick: View.OnClickListener) {
+    setOnClickListener(ThrottleClickListener(onClick, 500))
 }
 
 fun View.accessibleTouchTarget() {
@@ -111,4 +123,18 @@ fun View.accessibleTouchTarget() {
         val parentView = parent as? View
         parentView?.touchDelegate = TouchDelegate(delegateArea, this)
     }
+}
+
+fun View.fadeIn(duration: Long = 500) {
+    animate()
+        .alpha(1f)
+        .setDuration(duration)
+        .start()
+}
+
+fun View.fadeOut(duration: Long = 500) {
+    animate()
+        .alpha(0f)
+        .setDuration(duration)
+        .start()
 }
