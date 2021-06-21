@@ -72,6 +72,10 @@ dependencies {
     implementation deps.koin.viewmodel
     implementation deps.koin.fragment
 
+    implementation deps.room.runtime
+    implementation deps.room.roomKtx
+    kapt deps.room.kapt
+
     implementation deps.timber
 
     testImplementation deps.test.junit
